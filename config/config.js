@@ -5,12 +5,6 @@ module.exports = {
     database: "railway",
     host: "containers-us-west-140.railway.app",
     dialect: "postgres",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
   },
   test: {
     username: "postgres",
@@ -25,11 +19,5 @@ module.exports = {
     database: "railway",
     host: "containers-us-west-140.railway.app",
     dialect: "postgres",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
   },
 };
