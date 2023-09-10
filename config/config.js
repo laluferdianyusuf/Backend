@@ -1,37 +1,26 @@
-const dotenv = require("dotenv");
-const Sequelize = require("sequelize");
-
-dotenv.config();
-
-const { DB_USERNAME, DB_PASSWORD, DB_NAME, DB_HOST, DB_URL } = process.env;
-
-const db = new Sequelize(DB_URL, {
-  define: {
-    timestamp: false,
+module.exports = {
+  development: {
+    username: process.env.DB_USERNAME,
+    password: process.env.PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: "postgres",
+    url: process.env.DB_URL,
   },
-});
-
-module.exports = db;
-// module.exports = {
-//   development: {
-//     username: "postgres",
-//     password: "aUBlAO6llwgijOa1Ypsh",
-//     database: "railway",
-//     host: "containers-us-west-140.railway.app",
-//     dialect: "postgres",
-//   },
-//   test: {
-//     username: "postgres",
-//     password: "aUBlAO6llwgijOa1Ypsh",
-//     database: "railway",
-//     host: "containers-us-west-140.railway.app",
-//     dialect: "postgres",
-//   },
-//   production: {
-//     username: "postgres",
-//     password: "aUBlAO6llwgijOa1Ypsh",
-//     database: "railway",
-//     host: "containers-us-west-140.railway.app",
-//     dialect: "postgres",
-//   },
-// };
+  test: {
+    username: process.env.DB_USERNAME,
+    password: process.env.PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: "postgres",
+    url: process.env.DB_URL,
+  },
+  production: {
+    username: process.env.DB_USERNAME,
+    password: process.env.PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: "postgres",
+    url: process.env.DB_URL,
+  },
+};
