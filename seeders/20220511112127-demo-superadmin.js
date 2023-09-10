@@ -12,13 +12,12 @@ module.exports = {
       "users",
       [
         {
-          id: 1,
           name: "afinaprabalarasati",
           email: "superadmin@gmail.com",
           password: hashedPassword,
           role: ROLES.SUPERADMIN,
-          // createdAt: new Date(),
-          // updatedAt: new Date(),
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}
