@@ -4,20 +4,23 @@
     "password": "ferdi",
     "database": "doorlock_db",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": 5432
   },
   "test": {
     "username": "postgres",
     "password": "ferdi",
     "database": "doorlock_db",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": 5432
   },
   "production": {
     "username": "postgres",
     "password": "ferdi",
     "database": "doorlock_db",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": 5432
   }
 }
