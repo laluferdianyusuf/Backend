@@ -5,7 +5,8 @@
     "database": "railway",
     "host": "containers-us-west-59.railway.app",
     "dialect": "postgres",
-    "url": "postgresql://postgres:DTZMlkvAlZVkVxKGdeTo@containers-us-west-59.railway.app:5872/railway"
+    "url": "postgresql://postgres:DTZMlkvAlZVkVxKGdeTo@containers-us-west-59.railway.app:5872/railway",
+    "port": 5872
   },
   "test": {
     "username": "postgres",
@@ -20,6 +21,7 @@
     "database": "railway",
     "host": "containers-us-west-59.railway.app",
     "dialect": "postgres",
-    "url": "postgresql://postgres:DTZMlkvAlZVkVxKGdeTo@containers-us-west-59.railway.app:5872/railway"
+    "url": "postgresql://postgres:DTZMlkvAlZVkVxKGdeTo@containers-us-west-59.railway.app:5872/railway",
+    "port": 5872
   }
 }
