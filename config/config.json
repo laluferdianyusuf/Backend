@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "ferdi",
+    "database": "doorlock_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "url": "postgresql://postgres:DTZMlkvAlZVkVxKGdeTo@containers-us-west-59.railway.app:5872/railway"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "ferdi",
+    "database": "doorlock_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "ferdi",
+    "database": "doorlock_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "url": "postgresql://postgres:DTZMlkvAlZVkVxKGdeTo@containers-us-west-59.railway.app:5872/railway"
+  }
+}
