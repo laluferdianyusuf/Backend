@@ -1,6 +1,6 @@
 require("dotenv").config();
 const Sequelize = require("sequelize");
-const db = new Sequelize(DB_URL, {
+const db = new Sequelize(process.env.DB_URL, {
   define: {
     timestamp: false,
   },
