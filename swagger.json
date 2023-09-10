@@ -1,0 +1,358 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Binar Car Rental",
+    "description": "Challenge 6 Binar",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:1010",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Authntication",
+      "description": "Authentication API"
+    },
+    {
+      "name": "Cars",
+      "description": "Cars API"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register",
+        "parameters": [
+          {
+            "name": "For register",
+            "in": "body",
+            "description": "Register member.",
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Member successfully registered."
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login",
+        "parameters": [
+          {
+            "name": "Login",
+            "in": "body",
+            "description": "For login.",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Login successfully."
+          }
+        }
+      }
+    },
+    "/auth/register/admin": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "For register admin",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Register admin",
+            "in": "body",
+            "description": "For register admin.",
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Admin successfully registered.",
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "For Get Users",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Users get successfully.",
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        }
+      }
+    },
+
+    "/cars/show": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "For Get all Cars",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cars get successfully.",
+            "schema": {
+              "$ref": "#/definitions/manageCars"
+            }
+          }
+        }
+      }
+    },
+    "/cars/create": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "For Create Cars",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Create Cars",
+            "in": "body",
+            "description": "Create Car",
+            "schema": {
+              "$ref": "#/definitions/manageCars"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Car created successfully."
+          }
+        }
+      }
+    },
+    "/cars/update/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Cars that we want to delete",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "tags": ["Cars"],
+        "summary": "For Update Car",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Update Car",
+            "in": "body",
+            "description": "Create Car",
+            "schema": {
+              "$ref": "#/definitions/manageCars"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Car Updated Successfully."
+          }
+        }
+      }
+    },
+    "/cars/delete/{id}": {
+      "delete": {
+        "tags": ["Cars"],
+        "summary": "For Deleted Car",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of Cars that we want to delete",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Car deleted successfully."
+          }
+        }
+      }
+    },
+    "/cars/filter?": {
+      "parameters": [
+        {
+          "name": "availableAt",
+          "in": "query",
+          "required": true,
+          "description": "ID of Cars that we want to delete",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Cars"],
+        "summary": "For Filter Cars",
+        "parameters": [
+          {
+            "name": "isWithDriver",
+            "in": "query",
+            "required": true,
+            "type": "boolean",
+            "description": "Filter Cars",
+            "schema": {
+              "$ref": "#/definitions/manageCars"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cars successfully Filtered.",
+            "schema": {
+              "$ref": "#/definitions/manageCars"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Register": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "Login": {
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "manageCars": {
+      "properties": {
+        "plate": {
+          "type": "string"
+        },
+        "manufacture": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "rentPerDay": {
+          "type": "integer"
+        },
+        "capacity": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "transmission": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "option": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "specs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "availableAt": {
+          "type": "string"
+        },
+        "isWithDriver": {
+          "type": "boolean"
+        }
+      }
+    },
+    "filter": {
+      "properties": {
+        "availableAt": {
+          "type": "string"
+        },
+        "isWithDriver": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter your bearer token in the format **Bearer &lt;token>**"
+    }
+  }
+}
