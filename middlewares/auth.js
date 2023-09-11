@@ -35,12 +35,12 @@ const authenticate = async (req, res, next) => {
 function isSuperAdmin(req, res, next) {
   const user = req.user; // asumsikan bahwa pengguna telah diautentikasi dan objek pengguna telah disimpan di req.user
 
-  if (user && user.role === "superadmin") {
+  if (user && user.role === ROLES.SUPERADMIN) {
     return next(); // Berikan akses ke pengguna superadmin
   }
 
   // Jika bukan superadmin, kembalikan status 403 (Forbidden)
-  res.status(403).json({
+  res.status(404).json({
     status: false,
     message: "You must be superadmin to access this resource",
     data: null,
