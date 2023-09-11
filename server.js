@@ -19,11 +19,11 @@ const authController = require("./controllers/authController");
 // auth
 app.post(
   "/auth/registerUser",
+  // middleware.authenticate,
   middleware.isSuperAdmin,
   authController.register
 );
 app.post("/auth/login", authController.login);
-app.post("/auth/loginUser", authController.loginUser);
 app.get("/auth/me", middleware.authenticate, authController.currentUser);
 
 app.listen(PORT, () => {

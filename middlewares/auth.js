@@ -32,16 +32,20 @@ const authenticate = async (req, res, next) => {
   }
 };
 
-const isSuperAdmin = async (req, res, next) => {
-  const user = req.users;
+function isSuperAdmin(req, res, next) {
+  const user = req.user; // asumsikan bahwa pengguna telah diautentikasi dan objek pengguna telah disimpan di req.user
 
-  if (user.role === ROLES.SUPERADMIN) return next();
-  return res.status(401).send({
+  if (user && user.role === "superadmin") {
+    return next(); // Berikan akses ke pengguna superadmin
+  }
+
+  // Jika bukan superadmin, kembalikan status 403 (Forbidden)
+  res.status(403).json({
     status: false,
     message: "You must be superadmin to access this resource",
     data: null,
   });
-};
+}
 
 const roles = async (req, res, next) => {
   const users = req.users;
