@@ -45,19 +45,4 @@ const login = async (req, res) => {
   });
 };
 
-const loginUser = async (req, res) => {
-  const { email, password } = req.body;
-
-  const { status, status_code, message, data } = await authService.loginUser({
-    email,
-    password,
-  });
-
-  res.status(status_code).send({
-    status: status,
-    message: message,
-    data: data,
-  });
-};
-
 module.exports = { register, login, loginUser, currentUser };
