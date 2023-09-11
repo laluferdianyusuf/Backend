@@ -45,4 +45,4 @@ const login = async (req, res) => {
   });
 };
 
-module.exports = { register, login, loginUser, currentUser };
+module.exports = { register, login, currentUser };
