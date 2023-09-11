@@ -131,13 +131,14 @@ class AuthService {
 
   static async login({ email, password }) {
     try {
+      // Payload Validation
       if (!email) {
         return {
           status: false,
           status_code: 400,
-          message: "Email is required",
+          message: "Email wajib diisi",
           data: {
-            Login_user: null,
+            registered_user: null,
           },
         };
       }
@@ -146,18 +147,18 @@ class AuthService {
         return {
           status: false,
           status_code: 400,
-          message: "Password is required",
+          message: "Password wajib diisi",
           data: {
-            Login_user: null,
+            registered_user: null,
           },
         };
-      } else if (password < 8) {
+      } else if (password.length < 8) {
         return {
           status: false,
           status_code: 400,
-          message: "Password minimum 8 characters",
+          message: "Password minimal 8 karakter",
           data: {
-            Login_user: null,
+            registered_user: null,
           },
         };
       }
@@ -168,15 +169,18 @@ class AuthService {
         return {
           status: false,
           status_code: 404,
-          message: "Login Error",
+          message: "Email belum terdaftar",
           data: {
-            registered_user: null,
+            user: null,
           },
         };
       } else {
-        const isPassTrue = await bcrypt.compare(password, getUser.password);
+        const isPasswordMatch = await bcrypt.compare(
+          password,
+          getUser.password
+        );
 
-        if (isPassTrue) {
+        if (isPasswordMatch) {
           const token = jwt.sign(
             {
               id: getUser.id,
@@ -191,9 +195,18 @@ class AuthService {
           return {
             status: true,
             status_code: 200,
-            message: "Login succesfully",
+            message: "User berhasil login",
             data: {
               token,
+            },
+          };
+        } else {
+          return {
+            status: false,
+            status_code: 400,
+            message: "Password salah",
+            data: {
+              user: null,
             },
           };
         }
@@ -204,7 +217,7 @@ class AuthService {
         status_code: 500,
         message: err.message,
         data: {
-          Login_user: null,
+          registered_user: null,
         },
       };
     }
