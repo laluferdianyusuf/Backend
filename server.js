@@ -19,7 +19,6 @@ const authController = require("./controllers/authController");
 // auth
 app.post(
   "/auth/registerUser",
-  middleware.authenticate,
   middleware.isSuperAdmin,
   authController.register
 );
