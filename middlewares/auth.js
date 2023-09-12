@@ -35,7 +35,7 @@ const authenticate = async (req, res, next) => {
 const isSuperAdmin = async (req, res, next) => {
   const user = req.users; // asumsikan bahwa pengguna telah diautentikasi dan objek pengguna telah disimpan di req.user
 
-  if (user.role === ROLES.SUPERADMIN) {
+  if (user && user.role === ROLES.SUPERADMIN) {
     return next();
   }
   return res.status(401).json({
