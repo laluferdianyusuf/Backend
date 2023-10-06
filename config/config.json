@@ -1,11 +1,11 @@
 {
   "development": {
     "username": "postgres",
-    "password": "DTZMlkvAlZVkVxKGdeTo",
+    "password": "itGP3mWOsYMEOnmcHDGJ",
     "database": "railway",
-    "host": "containers-us-west-59.railway.app",
+    "host": "containers-us-west-194.railway.app",
     "dialect": "postgres",
-    "url": "postgresql://postgres:DTZMlkvAlZVkVxKGdeTo@containers-us-west-59.railway.app:5872/railway",
+    "url": "postgresql://postgres:itGP3mWOsYMEOnmcHDGJ@containers-us-west-194.railway.app:8018/railway",
     "port": 5872
   },
   "test": {
@@ -17,11 +17,11 @@
   },
   "production": {
     "username": "postgres",
-    "password": "DTZMlkvAlZVkVxKGdeTo",
+    "password": "itGP3mWOsYMEOnmcHDGJ",
     "database": "railway",
-    "host": "containers-us-west-59.railway.app",
+    "host": "containers-us-west-194.railway.app",
     "dialect": "postgres",
-    "url": "postgresql://postgres:DTZMlkvAlZVkVxKGdeTo@containers-us-west-59.railway.app:5872/railway",
+    "url": "postgresql://postgres:itGP3mWOsYMEOnmcHDGJ@containers-us-west-194.railway.app:8018/railway",
     "port": 5872
   }
 }
