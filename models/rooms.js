@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   rooms.init(
     {
-      room: DataTypes.INTEGER,
+      number: DataTypes.INTEGER,
     },
     {
       sequelize,

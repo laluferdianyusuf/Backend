@@ -258,9 +258,19 @@ class AuthService {
       }
 
       const getUser = await usersRepository.getByEmail({ email });
-      const getRoom = await usersRepository.getRoomByRooms({
+      const getRoom = await usersRepository.getRoomByNumber({
         number,
       });
+      if (!getRoom) {
+        return {
+          status: false,
+          status_code: 404,
+          message: `Woy ${getUser.name} Salah Kamar! `,
+          data: {
+            user: null,
+          },
+        };
+      }
       if (!getUser) {
         return {
           status: false,
@@ -272,7 +282,7 @@ class AuthService {
         };
       }
 
-      if (getUser.room === getRoom) {
+      if (getUser.room) {
         const isPasswordMatch = await bcrypt.compare(
           password,
           getUser.password
