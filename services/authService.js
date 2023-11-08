@@ -195,6 +195,104 @@ class AuthService {
           return {
             status: true,
             status_code: 200,
+            message: "berhasil login",
+            data: {
+              token,
+            },
+          };
+        } else {
+          return {
+            status: false,
+            status_code: 400,
+            message: "Password salah",
+            data: {
+              user: null,
+            },
+          };
+        }
+      }
+    } catch (err) {
+      return {
+        status: false,
+        status_code: 500,
+        message: err.message,
+        data: {
+          registered_user: null,
+        },
+      };
+    }
+  }
+
+  static async loginUser({ room, email, password }) {
+    try {
+      // Payload Validation
+      if (!email) {
+        return {
+          status: false,
+          status_code: 400,
+          message: "Email wajib diisi",
+          data: {
+            registered_user: null,
+          },
+        };
+      }
+
+      if (!password) {
+        return {
+          status: false,
+          status_code: 400,
+          message: "Password wajib diisi",
+          data: {
+            registered_user: null,
+          },
+        };
+      } else if (password.length < 8) {
+        return {
+          status: false,
+          status_code: 400,
+          message: "Password minimal 8 karakter",
+          data: {
+            registered_user: null,
+          },
+        };
+      }
+
+      const getUser = await usersRepository.getByEmail({ email });
+      const getRoom = await usersRepository.getRoomByRooms({
+        room,
+      });
+      if (!getUser) {
+        return {
+          status: false,
+          status_code: 404,
+          message: "Email belum terdaftar",
+          data: {
+            user: null,
+          },
+        };
+      }
+
+      if (getUser.room === getRoom) {
+        const isPasswordMatch = await bcrypt.compare(
+          password,
+          getUser.password
+        );
+
+        if (isPasswordMatch) {
+          const token = jwt.sign(
+            {
+              id: getUser.id,
+              email: getUser.email,
+            },
+            JWT.SECRET,
+            {
+              expiresIn: JWT.EXPIRED,
+            }
+          );
+
+          return {
+            status: true,
+            status_code: 200,
             message: "User berhasil login",
             data: {
               token,

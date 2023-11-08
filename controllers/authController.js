@@ -45,4 +45,21 @@ const login = async (req, res) => {
   });
 };
 
-module.exports = { register, login, currentUser };
+const loginUser = async (req, res) => {
+  const { room } = req.params;
+  const { email, password } = req.body;
+
+  const { status, status_code, message, data } = await authService.loginUser({
+    room,
+    email,
+    password,
+  });
+
+  res.status(status_code).send({
+    status: status,
+    message: message,
+    data: data,
+  });
+};
+
+module.exports = { register, login, currentUser, loginUser };

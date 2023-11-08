@@ -1,4 +1,5 @@
 const { users } = require("../models");
+const { rooms } = require("../models");
 
 class usersRepository {
   static async create({ name, email, password, room, role }) {
@@ -20,6 +21,11 @@ class usersRepository {
   static async getByRoom({ room }) {
     const getUser = await users.findOne({ where: { room: room } });
     return getUser;
+  }
+
+  static async getRoomByRooms({ room }) {
+    const getRoom = await rooms.findOne({ where: { room: room } });
+    return getRoom;
   }
 }
 

@@ -24,6 +24,7 @@ app.post(
   authController.register
 );
 app.post("/auth/login", authController.login);
+app.post("/auth/login/:room", authController.loginUser);
 app.get("/auth/me", middleware.authenticate, authController.currentUser);
 
 app.listen(PORT, () => {
