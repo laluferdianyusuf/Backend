@@ -46,11 +46,11 @@ const login = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { room } = req.params;
+  const { number } = req.params;
   const { email, password } = req.body;
 
   const { status, status_code, message, data } = await authService.loginUser({
-    room,
+    number,
     email,
     password,
   });

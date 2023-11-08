@@ -22,9 +22,30 @@ module.exports = {
       ],
       {}
     );
+
+    await queryInterface.bulkInsert(
+      "rooms",
+      [
+        {
+          number: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          number: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+
+      {}
+    );
   },
 
   async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete("users", null, {});
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete("rooms", null, {});
   },
 };

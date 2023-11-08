@@ -223,7 +223,7 @@ class AuthService {
     }
   }
 
-  static async loginUser({ room, email, password }) {
+  static async loginUser({ number, email, password }) {
     try {
       // Payload Validation
       if (!email) {
@@ -259,7 +259,7 @@ class AuthService {
 
       const getUser = await usersRepository.getByEmail({ email });
       const getRoom = await usersRepository.getRoomByRooms({
-        room,
+        number,
       });
       if (!getUser) {
         return {

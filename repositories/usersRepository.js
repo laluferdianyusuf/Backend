@@ -23,9 +23,9 @@ class usersRepository {
     return getUser;
   }
 
-  static async getRoomByRooms({ room }) {
-    const getRoom = await rooms.findOne({ where: { room: room } });
-    return getRoom;
+  static async getRoomByNumber({ number }) {
+    const getNumber = await rooms.findOne({ where: { number: number } });
+    return getNumber;
   }
 }
 

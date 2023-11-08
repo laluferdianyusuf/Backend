@@ -1,12 +1,12 @@
 {
   "development": {
     "username": "postgres",
-    "password": "53B6EeBAeD12e2gaDc2FF516BFgE421A",
+    "password": "*aA52AgF433b3*B23aBCba5dfDaF-E*f",
     "database": "railway",
     "host": "roundhouse.proxy.rlwy.net",
     "dialect": "postgres",
-    "url": "postgres://postgres:53B6EeBAeD12e2gaDc2FF516BFgE421A@roundhouse.proxy.rlwy.net:34422/railway",
-    "port": 34422
+    "url": "postgres://postgres:*aA52AgF433b3*B23aBCba5dfDaF-E*f@roundhouse.proxy.rlwy.net:25725/railway",
+    "port": 25725
   },
   "test": {
     "username": "postgres",
@@ -17,11 +17,11 @@
   },
   "production": {
     "username": "postgres",
-    "password": "53B6EeBAeD12e2gaDc2FF516BFgE421A",
+    "password": "*aA52AgF433b3*B23aBCba5dfDaF-E*f",
     "database": "railway",
     "host": "roundhouse.proxy.rlwy.net",
     "dialect": "postgres",
-    "url": "postgres://postgres:53B6EeBAeD12e2gaDc2FF516BFgE421A@roundhouse.proxy.rlwy.net:34422/railway",
-    "port": 34422
+    "url": "postgres://postgres:*aA52AgF433b3*B23aBCba5dfDaF-E*f@roundhouse.proxy.rlwy.net:25725/railway",
+    "port": 25725
   }
 }
