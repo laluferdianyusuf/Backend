@@ -1,3 +1,4 @@
+const usersRepository = require("../repositories/usersRepository");
 const authService = require("../services/authService");
 
 const register = async (req, res) => {
@@ -62,4 +63,18 @@ const loginUser = async (req, res) => {
   });
 };
 
-module.exports = { register, login, currentUser, loginUser };
+const getRoom = async (req, res) => {
+  const { number } = req.params;
+
+  const { status, status_code, message, data } = await authService.getRoom({
+    number,
+  });
+
+  res.status(status_code).send({
+    status: status,
+    message: message,
+    data: data,
+  });
+};
+
+module.exports = { register, login, currentUser, loginUser, getRoom };

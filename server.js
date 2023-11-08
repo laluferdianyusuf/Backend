@@ -26,6 +26,7 @@ app.post(
 app.post("/auth/login", authController.login);
 app.post("/auth/login/:number", authController.loginUser);
 app.get("/auth/me", middleware.authenticate, authController.currentUser);
+app.get("/auth/rooms/:number", authController.getRoom);
 
 app.listen(PORT, () => {
   console.log(`Server berhasil berjalan di port http://localhost:${PORT}`);

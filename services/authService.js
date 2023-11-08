@@ -258,10 +258,8 @@ class AuthService {
       }
 
       const getUser = await usersRepository.getByEmail({ email });
-      const getRoom = await usersRepository.getRoomByNumber({
-        number,
-      });
-      if (!getRoom) {
+
+      if (number) {
         return {
           status: false,
           status_code: 404,
@@ -327,6 +325,35 @@ class AuthService {
         data: {
           registered_user: null,
         },
+      };
+    }
+  }
+
+  static async getRoom({ number }) {
+    try {
+      const getRoom = await usersRepository.getRoomByNumber({ number });
+
+      if (getRoom) {
+        return {
+          status: true,
+          status_code: 201,
+          message: "Room Get Success",
+          data: getRoom,
+        };
+      } else {
+        return {
+          status: false,
+          status_code: 400,
+          message: "Cannot Get Room",
+          data: null,
+        };
+      }
+    } catch (error) {
+      return {
+        status: false,
+        status_code: 500,
+        message: "Error: " + error.message,
+        data: null,
       };
     }
   }
