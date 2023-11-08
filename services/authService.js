@@ -258,8 +258,10 @@ class AuthService {
       }
 
       const getUser = await usersRepository.getByEmail({ email });
+      console.log(getUser.room);
+      console.log(parseInt(number));
 
-      if (number) {
+      if (parseInt(number) !== getUser.room) {
         return {
           status: false,
           status_code: 404,
